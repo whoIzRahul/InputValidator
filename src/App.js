@@ -1,23 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import UserForm from './Components/Form/UserForm';
+import ErrorModal from './Components/Modal/ErrorModal';
+import Users from './Components/Users/Users';
+import {useState} from 'react';
 
 function App() {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [userList, setUserList] = useState([]);
+  const addUserHandler = (newUser) =>{
+    setUserList((prevState)=>{
+      return [newUser,...prevState]
+    });
+  }
+  const deleteUserHandler = (id) => {
+    setUserList((prevState) => {
+      return prevState.filter((user)=>user.id !== id);
+    });
+  }
+
+  const errorMessageHandler = (message) =>{
+    setErrorMessage(message);
+  }
+
+  const modalClickHandler = () => {
+    setErrorMessage('');
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserForm onAddUser={addUserHandler} onError={errorMessageHandler}/>
+      {/* <Users userList={userList} onDeleteUser={deleteUserHandler}/>
+      <ErrorModal message={errorMessage}/> */}
+      {errorMessage === '' ? <Users userList={userList} onDeleteUser={deleteUserHandler}/> : <ErrorModal message={errorMessage} onRemove={modalClickHandler}/>}
+      
     </div>
   );
 }

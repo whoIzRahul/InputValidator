@@ -1,4 +1,10 @@
+body{
+  background-color: #282c34;
+}
+
 .App {
+  width: 50%;
+  margin: auto;
   text-align: center;
 }
 

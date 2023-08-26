@@ -1,0 +1,42 @@
+.formHolder{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.formInput label{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.formInput input{
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.inValid input{
+    color:#fff;
+    background-color: red;
+}
+
+
+.formControl{
+
+    text-align: right;
+}
+
+.formControl button{
+    padding: 10px 20px;
+    font-size: 15px;
+    text-align: center;
+    background-color: greenyellow;
+    border: none;
+}
